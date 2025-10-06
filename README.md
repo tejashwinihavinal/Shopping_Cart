@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TechStore - Shopping Cart Application
+
+A modern, responsive shopping cart application built with Next.js, TypeScript, and Tailwind CSS. Features a clean UI with toast notifications, dynamic button states, and a smooth sidebar cart experience.
+
+## Features
+
+- **Product Catalog**: Browse a variety of tech products with emoji icons and pricing
+- **Add to Cart**: Click "Add to Cart" to add items with instant toast feedback
+- **Dynamic Button States**: Button changes from blue to black when item is in cart
+- **Sidebar Cart**: Smooth sliding sidebar cart with quantity controls
+- **Persistent Cart**: Cart data is saved in localStorage
+- **Toast Notifications**: Success messages for adding and removing items
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Clean UI**: Modern design with hover effects and smooth transitions
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Notifications**: React Hot Toast
+- **State Management**: React Hooks with localStorage persistence
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd Shopping_Cart
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+my-app/
+├── app/
+│   ├── api/
+│   │   ├── products/     # Product API endpoint
+│   │   └── checkout/     # Checkout API endpoint
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/
+│   ├── Header.tsx        # App header with cart button
+│   ├── ProductCard.tsx   # Individual product card
+│   ├── ProductGrid.tsx   # Product grid layout
+│   ├── CartModal.tsx     # Sidebar cart component
+│   └── CartItem.tsx      # Cart item with controls
+├── hooks/
+│   ├── useProducts.ts    # Product data fetching
+│   └── useCart.ts        # Cart state management
+├── types/
+│   └── product.ts        # TypeScript type definitions
+├── utils/
+│   └── helpers.ts        # Utility functions
+└── public/               # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API Endpoints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### GET /api/products
+Returns a list of available products.
 
-## Deploy on Vercel
+### POST /api/checkout
+Processes the cart checkout with cart items.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Key Components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ProductCard
+- Displays product information
+- Handles add to cart functionality
+- Shows toast notification on add
+- Changes button color based on cart status
+
+### CartModal
+- Sidebar-style cart overlay
+- Quantity adjustment controls
+- Item removal with toast feedback
+- Checkout functionality
+
+### useCart Hook
+- Manages cart state
+- Persists data to localStorage
+- Provides cart operations (add, remove, update quantity)
+
+## Styling
+
+The application uses Tailwind CSS for styling with:
+- Responsive grid layouts
+- Smooth transitions and animations
+- Hover effects on interactive elements
+- Clean, modern design aesthetic
+
+## Deployment
+
+The app can be deployed to Vercel, Netlify, or any platform supporting Next.js:
+
+```bash
+npm run build
+npm start
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
