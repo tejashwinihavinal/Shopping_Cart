@@ -13,7 +13,7 @@ export default function Header({ cartItemCount, onCartClick }: HeaderProps) {
         <h1 className="text-2xl font-bold text-gray-900">TechStore</h1>
         <button
           onClick={onCartClick}
-          className="relative p-2 text-gray-700 hover:text-gray-900 transition-colors"
+          className="relative p-2 text-gray-700 hover:text-gray-900 transition-colors cursor-pointer"
           aria-label="Shopping cart"
         >
           <ShoppingCart size={28} />

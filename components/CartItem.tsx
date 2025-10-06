@@ -26,7 +26,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
       <div className="flex items-center gap-2">
         <button
           onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
+          className="p-1 rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
           aria-label="Decrease quantity"
         >
           <Minus size={18} />
@@ -36,7 +36,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
         </span>
         <button
           onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-          className="p-1 rounded-full hover:bg-gray-200 transition-colors"
+          className="p-1 rounded-full hover:bg-gray-200 transition-colors cursor-pointer"
           aria-label="Increase quantity"
         >
           <Plus size={18} />
@@ -44,7 +44,7 @@ export default function CartItem({ item, onUpdateQuantity, onRemove }: CartItemP
       </div>
       <button
         onClick={() => onRemove(item.id)}
-        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+        className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
         aria-label="Remove item"
       >
         <Trash2 size={20} />

@@ -25,17 +25,16 @@ export default function CartModal({
   onRemove,
   onCheckout,
 }: CartModalProps) {
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+    <div className={`fixed inset-0 z-50 ${isOpen ? '' : 'pointer-events-none'}`}>
+      {/* Sidebar */}
+      <div className={`absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         {/* Cart Header */}
         <div className="flex justify-between items-center p-6 border-b">
           <h2 className="text-2xl font-bold text-gray-900">Shopping Cart</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 transition-colors"
+            className="text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
             aria-label="Close cart"
           >
             <X size={24} />
@@ -81,7 +80,7 @@ export default function CartModal({
             </div>
             <button
               onClick={onCheckout}
-              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
+              className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg cursor-pointer"
             >
               Checkout
             </button>

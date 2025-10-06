@@ -23,6 +23,11 @@ export default function HomePage() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [checkoutMessage, setCheckoutMessage] = useState('');
 
+  const handleRemoveFromCart = (id: number) => {
+    removeFromCart(id);
+    toast.success('Item removed from cart!');
+  };
+
   const handleCheckout = async () => {
     try {
       const cartData = cart.map(item => ({
@@ -79,7 +84,7 @@ export default function HomePage() {
         checkoutMessage={checkoutMessage}
         onClose={() => setIsCartOpen(false)}
         onUpdateQuantity={updateQuantity}
-        onRemove={removeFromCart}
+        onRemove={handleRemoveFromCart}
         onCheckout={handleCheckout}
       />
       <Toaster />
