@@ -1,13 +1,20 @@
 import React from 'react';
 import { Product } from '@/types/product';
 import { getProductEmoji, formatPrice } from '@/utils/helpers';
+import toast from 'react-hot-toast';
 
 type ProductCardProps = {
   product: Product;
   onAddToCart: (product: Product) => void;
+  isInCart: boolean;
 };
 
-export default function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export default function ProductCard({ product, onAddToCart, isInCart }: ProductCardProps) {
+  const handleAddToCart = () => {
+    onAddToCart(product);
+    toast.success('Added to cart!');
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
       <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
@@ -21,10 +28,14 @@ export default function ProductCard({ product, onAddToCart }: ProductCardProps) 
           {formatPrice(product.price)}
         </p>
         <button
-          onClick={() => onAddToCart(product)}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          onClick={handleAddToCart}
+          className={`w-full py-2 px-4 rounded-lg transition-colors font-medium cursor-pointer ${
+            isInCart
+              ? 'bg-black text-white hover:bg-gray-800'
+              : 'bg-blue-600 text-white hover:bg-blue-700'
+          }`}
         >
-          Add to Cart
+          {isInCart ? 'In Cart' : 'Add to Cart'}
         </button>
       </div>
     </div>

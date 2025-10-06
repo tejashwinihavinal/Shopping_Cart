@@ -6,6 +6,7 @@ import ProductGrid from '@/components/ProductGrid';
 import CartModal from '@/components/CartModal';
 import { useProducts } from '@/hooks/useProducts';
 import { useCart } from '@/hooks/useCart';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function HomePage() {
   const { products, isLoading, error } = useProducts();
@@ -70,7 +71,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header cartItemCount={cartItemCount} onCartClick={() => setIsCartOpen(true)} />
-      <ProductGrid products={products} onAddToCart={addToCart} />
+      <ProductGrid products={products} onAddToCart={addToCart} cart={cart} />
       <CartModal
         isOpen={isCartOpen}
         cart={cart}
@@ -81,6 +82,7 @@ export default function HomePage() {
         onRemove={removeFromCart}
         onCheckout={handleCheckout}
       />
+      <Toaster />
     </div>
   );
 }
